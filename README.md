@@ -1,4 +1,4 @@
-# docmost-kubernetes<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -44,7 +44,15 @@
     </li>
 </ol>
 
-<h2>Step 2: Build and Push the Docker Image</h2>
+<h2>Step 2: Log in to Docker Hub</h2>
+<ol>
+    <li>Log in to Docker Hub using your credentials:
+        <pre><code>docker login</code></pre>
+    </li>
+    <li>Enter your Docker Hub username and password when prompted.</li>
+</ol>
+
+<h2>Step 3: Build and Push the Docker Image</h2>
 <ol>
     <li>Build the Docker image for the Docmost app:
         <pre><code>docker build -t tawkeer/docmost:latest .</code></pre>
@@ -54,7 +62,7 @@
     </li>
 </ol>
 
-<h2>Step 3: Update Docker Compose File</h2>
+<h2>Step 4: Update Docker Compose File</h2>
 <p>We modified the <code>docker-compose.yml</code> file to include PostgreSQL and Redis. Here’s the updated file:</p>
 <pre><code>
 version: '3'
@@ -98,7 +106,7 @@ volumes:
   redis_data:
 </code></pre>
 
-<h2>Step 4: Deploy Redis</h2>
+<h2>Step 5: Deploy Redis</h2>
 <ol>
     <li>Create a file named <code>redis-deployment.yaml</code> and add the following content:
         <pre><code>
@@ -145,7 +153,7 @@ kubectl apply -f redis-service.yaml
     </li>
 </ol>
 
-<h2>Step 5: Deploy PostgreSQL</h2>
+<h2>Step 6: Deploy PostgreSQL</h2>
 <ol>
     <li>Create a file named <code>postgres-deployment.yaml</code> and add the following content:
         <pre><code>
@@ -199,7 +207,7 @@ kubectl apply -f postgres-service.yaml
     </li>
 </ol>
 
-<h2>Step 6: Deploy Docmost</h2>
+<h2>Step 7: Deploy Docmost</h2>
 <ol>
     <li>Create a file named <code>docmost-deployment.yaml</code> and add the following content:
         <pre><code>
@@ -254,7 +262,7 @@ kubectl apply -f docmost-service.yaml
     </li>
 </ol>
 
-<h2>Step 7: Access the App</h2>
+<h2>Step 8: Access the App</h2>
 <ol>
     <li>Run the following command to get the external IP or NodePort:
         <pre><code>kubectl get services</code></pre>
@@ -274,7 +282,7 @@ kubectl apply -f docmost-service.yaml
     </li>
 </ol>
 
-<h2>Step 8: Expose the App to the Internet (Optional)</h2>
+<h2>Step 9: Expose the App to the Internet (Optional)</h2>
 <p>To expose the app to the internet, you can:</p>
 <ol>
     <li><strong>Use a LoadBalancer</strong>:
@@ -285,7 +293,7 @@ kubectl apply -f docmost-service.yaml
     </li>
 </ol>
 
-<h2>Troubleshooting</h2>
+<h2>Step 10: Troubleshooting</h2>
 <p>If you encounter issues, check the following:</p>
 <ol>
     <li><strong>Pod Logs</strong>:
@@ -301,7 +309,7 @@ kubectl apply -f docmost-service.yaml
     </li>
 </ol>
 
-<h2>Clean Up</h2>
+<h2>Step 11: Clean Up</h2>
 <p>To delete all resources created by this deployment, run:</p>
 <pre><code>
 kubectl delete -f docmost-deployment.yaml
